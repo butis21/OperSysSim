@@ -1,0 +1,225 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#file-editor textarea {
+    width: calc(100% - 20px);
+    height: calc(100% - 60px);
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Стили для окна папки (аналогично другим окнам) */
+#folder-window-template {
+    width: 300px;
+    height: 300px;
+}
+
+#file-editor button {
+    display: block;
+    width: 100%;
+}
+
+#context-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#context-menu input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#context-menu button {
+    width: 100%;
+}
+
+#desktop {
+    width: 100%;
+    height: calc(100% - 40px);
+    background-color: #0078D7;
+    position: relative;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+#taskbar {
+    width: 100%;
+    height: 40px;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+#start-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#start-menu {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    background-color: #666;
+    display: none;
+}
+
+#start-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#start-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+#taskbar-windows {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.taskbar-window {
+    background-color: #555;
+    color: white;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.taskbar-window:hover {
+    background-color: #777;
+}
+
+.window {
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    display: none;
+}
+
+.large-window {
+    width: 400px;
+    height: 400px;
+}
+
+#settings-window {
+    height: 700px;
+}
+
+.fullscreen {
+    width: 100vw;
+    height: calc(100vh - 40px);
+    top: 0;
+    left: 0;
+}
+
+.window-header {
+    background-color: #444;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.window-controls button {
+    margin-left: 5px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.window-controls button:hover {
+    color: red;
+}
+
+.window-content {
+    padding: 10px;
+}
+
+#calc-buttons button {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+#calc-display {
+    width: calc(100% - 20px);
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#game-canvas {
+    border: 1px solid black;
+    background-color: #f0f0f0;
+}
+
+.white-icon {
+    filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(180deg);
+}
+
+/* Иконка справки */
+#help-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#help-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Стили для окна справки */
+#help-window {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}

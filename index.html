@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="desktop">
+        <!-- Иконки на рабочем столе -->
+        <div class="icon" id="my-computer">Мой Компьютер</div>
+        <div class="icon" id="browser-icon">Браузер</div> <!-- Добавлена иконка браузера -->
+        <div class="icon" id="recycle-bin">Корзина</div>
+    </div>
+
+    <!-- Меню "Пуск" -->
+    <div id="start-menu">
+        <ul>
+            <li>Программы
+                <ul>
+                    <li id="calculator-option">Калькулятор</li>
+                    <li id="mini-game-option">Мини-игра</li>
+                    <li id="browser-option">Браузер</li> <!-- Добавлен браузер в меню "Пуск" -->
+                </ul>
+            </li>
+            <li id="settings-option">Настройки</li>
+            <li>Выход</li>
+        </ul>
+    </div>
+    <div id="taskbar">
+        <!-- Кнопка "Пуск" -->
+        <button id="start-button">Пуск</button>
+        <div id="taskbar-windows"></div>
+        <div id="taskbar-right">
+            <!-- Иконка справки -->
+            <div id="help-icon" class="taskbar-icon">
+                <img src="help.png" alt="Help" class="white-icon">
+            </div>
+            <div id="Wifi-icon">
+                <!--<img src="wifi.png" alt="Connected to Wi-Fi" class="white-icon">-->
+            </div>
+        </div>
+    </div>
+
+    <!-- Окно справки -->
+    <div id="help-window" class="window" style="display: none;">
+        <div class="window-header">
+            <span class="window-title">Справка</span>
+            <div class="window-controls">
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <p>
+                Это окно справки. Оно открыто в симуляторе операционной системы. Здесь вы можете: <br>
+                <br>
+                * удалить пару файлов;<br>
+                * поиграть в мини-игру;<br>
+                * воспользоваться допотопным браузером;<br>
+                * решить простые примеры;<br>
+                * поставить свою фотографию на обои.<br>
+                <br>
+                Благодарим за использование!
+            </p>
+        </div>
+    </div>
+
+    <!-- Окно "Мой компьютер" -->
+    <div id="my-computer-window" class="window">
+        <div class="window-header">
+            <span class="window-title">Мой Компьютер</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <ul id="disk-name">
+                <li>Системный диск (C:) - 128 ГБ</li>
+            </ul>
+            <button id="show-files">Показать файлы</button>
+            <ul id="disk-list" style="display: none;">
+                <li class="file">Документ 1.txt</li>
+                <li class="file">Документ 2.txt</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Окно "Корзина" -->
+    <div id="recycle-bin-window" class="window">
+        <div class="window-header">
+            <span class="window-title">Корзина</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <ul id="recycle-list">
+                <!-- Удаленные файлы будут появляться здесь -->
+            </ul>
+            <button id="restore-file">Восстановить</button>
+            <button id="delete-file">Удалить</button>
+        </div>
+    </div>
+
+    <!-- Окно "Калькулятор" -->
+    <div id="calculator-window" class="window large-window">
+        <div class="window-header">
+            <span class="window-title">Калькулятор</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <input type="text" id="calc-display" readonly>
+            <div id="calc-buttons">
+                <button>7</button><button>8</button><button>9</button><button>/</button><br>
+                <button>4</button><button>5</button><button>6</button><button>*</button><br>
+                <button>1</button><button>2</button><button>3</button><button>-</button><br>
+                <button>0</button><button>.</button><button>=</button><button>+</button><br>
+                <button id="calc-clear">C</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Окно "Мини-игра" -->
+    <div id="mini-game-window" class="window large-window">
+        <div class="window-header">
+            <span class="window-title">Мини-игра</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <canvas id="game-canvas" width="300" height="200"></canvas>
+            <button id="start-game">Начать игру</button>
+        </div>
+    </div>
+
+    <!-- Окно "Браузер" -->
+    <div id="browser-window" class="window large-window">
+        <div class="window-header">
+            <span class="window-title">Браузер</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <input type="text" id="browser-url" placeholder="Введите URL">
+            <button id="browser-go">Перейти</button>
+            <iframe id="browser-frame" src="" sandbox="allow-scripts allow-same-origin" loading="lazy" width="100%" height="300px"></iframe>
+            <div id="browser-error" style="display: none; color: red;">
+                Не удалось загрузить страницу. Этот сайт не позволяет загрузку в iframe. Попробуйте открыть его в новой вкладке.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Контекстное меню для создания папки -->
+    <div id="context-menu" style="display: none;">
+        <input type="text" id="folder-name" placeholder="Введите имя папки">
+        <button id="create-folder">Создать</button>
+    </div>  
+    
+    <!-- Окно папки -->
+    <div id="folder-window-template" class="window" style="display: none;">
+        <div class="window-header">
+            <span class="window-title">Папка</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <ul id="folder-content">
+                <!-- Содержимое папки будет добавляться сюда -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Контекстное меню для создания текстового файла внутри папки -->
+    <div id="create-file-menu" style="display: none;">
+        <input type="text" id="file-name" placeholder="Введите имя текстового файла">
+        <button id="create-file">Создать</button>
+    </div>
+
+    <!-- Окно для редактирования текстового файла -->
+    <div id="file-editor" class="window" style="display: none;">
+        <div class="window-header">
+            <span id="file-editor-title" class="window-title">Редактировать файл</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <textarea id="file-content" style="width: 100%; height: calc(100% - 40px);"></textarea>
+            <button id="save-file">Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Окно "Настройки" -->
+    <div id="settings-window" class="window">
+        <div class="window-header">
+            <span class="window-title">Настройки</span>
+            <div class="window-controls">
+                <button class="minimize-window">_</button>
+                <button class="maximize-window">[]</button>
+                <button class="close-window">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <h3>Изменение фона обоев</h3>
+            <input type="color" id="background-color-picker" value="#0078D7">
+            <h3>Цвета системы</h3>
+            <input type="color" id="system-color-picker" value="#333333">
+            <h3>Расположение панели задач</h3>
+            <select id="taskbar-position">
+                <option value="bottom">Снизу</option>
+                <option value="top">Сверху</option>
+            </select>
+            <h3>Установка своих обоев</h3>
+            <input type="file" id="background-image-picker" accept="image/*">
+            <h3>Вид фона</h3>
+            <select id="background-style">
+                <option value="cover">Растяжение</option>
+                <option value="contain">Замещение</option>
+                <option value="repeat">Дублирование</option>
+            </select>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
